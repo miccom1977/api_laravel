@@ -21,14 +21,14 @@ class BookingRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'booking_date' => 'required|unique:bookings'
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'booking_date.required' => 'Set datetime booking',
