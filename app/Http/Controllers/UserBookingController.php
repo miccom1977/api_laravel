@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use Illuminate\Http\Request;
+use App\Services\BookingService;
 use App\Http\Requests\BookingRequest;
 use App\Http\Requests\BookingUpdateRequest;
 
 class UserBookingController extends Controller
 {
+    private $bookingService;
+
+    public function __construct( BookingService $bookingService ){
+        $this->bookingService = $bookingService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,17 +22,7 @@ class UserBookingController extends Controller
      */
     public function index()
     {
-        return Booking::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
+        return $this->bookingService->getAllFreeTerms();
     }
 
     /**
@@ -35,7 +31,7 @@ class UserBookingController extends Controller
      * @param  \Illuminate\Http\BookingRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookingRequest $request)
+    public function store(BookingUpdateRequest $request)
     {
         return Booking::create($request->all());
     }
@@ -49,17 +45,6 @@ class UserBookingController extends Controller
     public function show(Booking $booking)
     {
         return $booking;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Booking $booking)
-    {
-        //
     }
 
     /**
