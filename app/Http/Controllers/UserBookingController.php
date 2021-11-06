@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Services\BookingService;
-use App\Http\Requests\BookingRequest;
 use App\Http\Requests\BookingUpdateRequest;
 
 class UserBookingController extends Controller

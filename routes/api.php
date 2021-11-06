@@ -2,9 +2,9 @@
 
 use App\Services\BookingService;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserBookingController;
-use App\Http\Controllers\AdminBookingController;
+use App\Http\Controllers\{
+    AuthController, UserBookingController, AdminBookingController
+};
 
 /*
 |--------------------------------------------------------------------------
